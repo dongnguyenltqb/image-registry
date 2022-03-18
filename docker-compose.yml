@@ -18,9 +18,9 @@ services:
     ports:
       - 5009:80
     environment:
-      - REGISTRY_HOST=tunnel.spiritlabs.co
+      - REGISTRY_HOST=registry.dongnguyen.dev
       - REGISTRY_SSL=true
-      - REGISTRY_DOMAIN=tunnel.spiritlabs.co
+      - REGISTRY_DOMAIN=registry.dongnguyen.dev
       - REGISTRY_STORAGE_DELETE_ENABLED=
       - REGISTRY_USER=docker
       - REGISTRY_PASS=docker
