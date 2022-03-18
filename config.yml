@@ -1,0 +1,17 @@
+version: 0.1
+http:
+  addr: :5000
+  headers:
+    X-Content-Type-Options: [nosniff]
+auth:
+  htpasswd:
+    realm: "Registry Realm"
+    path: /.htpasswd
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
+storage:
+  filesystem:
+    rootdirectory: /var/lib/registry

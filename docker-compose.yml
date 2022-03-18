@@ -1,0 +1,33 @@
+version: "3"
+services:
+  registry:
+    image: "registry:2"
+    restart: always
+    ports:
+      - "5008:5000"
+    environment:
+      DB_MYSQL_NAME: "npm"
+    volumes:
+      - ./config.yml:/etc/docker/registry/config.yml
+      - ./.htpasswd:/.htpasswd
+      - ./data:/var/lib/registry
+    networks:
+      - registry
+  app:
+    image: jc21/registry-ui
+    ports:
+      - 5009:80
+    environment:
+      - REGISTRY_HOST=tunnel.spiritlabs.co
+      - REGISTRY_SSL=true
+      - REGISTRY_DOMAIN=tunnel.spiritlabs.co
+      - REGISTRY_STORAGE_DELETE_ENABLED=
+      - REGISTRY_USER=docker
+      - REGISTRY_PASS=docker
+    restart: always
+    networks: 
+      - registry
+networks:
+  registry:
+    driver: bridge
+
