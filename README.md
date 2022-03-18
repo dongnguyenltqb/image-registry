@@ -2,7 +2,7 @@
 
 1. To generate account for registry
     ```shell
-    htpasswd -c .htpasswd username
+        docker run --entrypoint htpasswd httpd:2 -Bbn testuser testpassword > auth/htpasswd
     ```
 2. Run
     ```shell
